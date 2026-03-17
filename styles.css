@@ -1,3 +1,9 @@
+.full-width .cm-content,
+.full-width .cm-line,
+.full-width .markdown-preview-sizer {
+  max-width: 100% !important;
+}
+
 .full-width .table-wrapper {
   width: 100% !important;
 }
