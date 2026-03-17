@@ -1,4 +1,4 @@
-import { Notice, Plugin, TFile } from 'obsidian';
+import { Plugin, TFile } from 'obsidian';
 
 const CSS_CLASS = 'full-width';
 
@@ -56,10 +56,8 @@ export default class ToggleFullWidth extends Plugin {
       const index = classes.indexOf(CSS_CLASS);
       if (index >= 0) {
         classes.splice(index, 1);
-        new Notice('Full width disabled');
       } else {
         classes.push(CSS_CLASS);
-        new Notice('Full width enabled');
       }
 
       if (classes.length > 0) {
