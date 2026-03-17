@@ -1,3 +1,11 @@
 .full-width {
   --file-line-width: 100%;
 }
+
+.full-width .table-wrapper {
+  width: 100% !important;
+}
+
+.full-width .table-wrapper table {
+  width: 100%;
+}
