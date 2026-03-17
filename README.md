@@ -40,3 +40,19 @@ The plugin ships a CSS rule that sets `--file-line-width: 100%` on notes with th
 2. Create a folder `.obsidian/plugins/toggle-full-width/` in your vault
 3. Copy the three files into that folder
 4. Enable the plugin in Settings → Community plugins
+
+## Development
+
+```bash
+pnpm install
+pnpm run dev      # watch mode
+pnpm run build    # production build
+pnpm run lint     # check with biome
+pnpm run lint:fix # auto-fix
+```
+
+To test locally, symlink the project folder into your vault:
+
+```bash
+ln -s /path/to/obsidian-toggle-full-width /path/to/vault/.obsidian/plugins/toggle-full-width
+```

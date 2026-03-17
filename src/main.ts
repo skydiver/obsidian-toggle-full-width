@@ -1,14 +1,14 @@
-import { Notice, Plugin, TFile } from "obsidian";
+import { Notice, Plugin, TFile } from 'obsidian';
 
-const CSS_CLASS = "full-width";
+const CSS_CLASS = 'full-width';
 
 export default class ToggleFullWidth extends Plugin {
   private statusBarEl!: HTMLElement;
 
   async onload() {
     this.statusBarEl = this.addStatusBarItem();
-    this.statusBarEl.addClass("mod-clickable");
-    this.registerDomEvent(this.statusBarEl, "click", () => {
+    this.statusBarEl.addClass('mod-clickable');
+    this.registerDomEvent(this.statusBarEl, 'click', () => {
       const file = this.app.workspace.getActiveFile();
       if (file) {
         this.toggleFullWidth(file);
@@ -16,8 +16,8 @@ export default class ToggleFullWidth extends Plugin {
     });
 
     this.addCommand({
-      id: "toggle-full-width",
-      name: "Toggle full width",
+      id: 'toggle-full-width',
+      name: 'Toggle full width',
       callback: () => {
         const file = this.app.workspace.getActiveFile();
         if (file) {
@@ -27,17 +27,17 @@ export default class ToggleFullWidth extends Plugin {
     });
 
     this.registerEvent(
-      this.app.workspace.on("active-leaf-change", () => {
+      this.app.workspace.on('active-leaf-change', () => {
         this.updateStatusBar();
-      }),
+      })
     );
 
     this.registerEvent(
-      this.app.metadataCache.on("changed", (file) => {
+      this.app.metadataCache.on('changed', (file) => {
         if (file === this.app.workspace.getActiveFile()) {
           this.updateStatusBar();
         }
-      }),
+      })
     );
 
     this.updateStatusBar();
@@ -56,10 +56,10 @@ export default class ToggleFullWidth extends Plugin {
       const index = classes.indexOf(CSS_CLASS);
       if (index >= 0) {
         classes.splice(index, 1);
-        new Notice("Full width disabled");
+        new Notice('Full width disabled');
       } else {
         classes.push(CSS_CLASS);
-        new Notice("Full width enabled");
+        new Notice('Full width enabled');
       }
 
       if (classes.length > 0) {
@@ -73,7 +73,7 @@ export default class ToggleFullWidth extends Plugin {
   private updateStatusBar(): void {
     const file = this.app.workspace.getActiveFile();
     if (!file) {
-      this.statusBarEl.setText("");
+      this.statusBarEl.setText('');
       return;
     }
 
@@ -83,6 +83,6 @@ export default class ToggleFullWidth extends Plugin {
       ? classes.includes(CSS_CLASS)
       : classes === CSS_CLASS;
 
-    this.statusBarEl.setText(isFullWidth ? "↔ Full width" : "↔ Normal");
+    this.statusBarEl.setText(isFullWidth ? '↔ Full width' : '↔ Normal');
   }
 }
